@@ -1,0 +1,17 @@
+
+{% extends 'accounts/userprofile_base.html' %}
+
+{% block list %}
+<div class="centerstage">
+
+
+    {% for foo in userprofile_list %}
+        <div class="profile-items">
+
+            <h1><a href="{% url 'accounts:detail' pk=foo.pk %}">View My Profile</a></h1>
+
+        </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

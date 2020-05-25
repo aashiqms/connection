@@ -1,0 +1,20 @@
+{% extends 'accounts/userprofile_base.html' %}
+{% load bootstrap4 %}
+{% block create %}
+    <h1>Edit Your Profile Details</h1>
+
+    <form method="POST" class="userprofile-form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="save btn btn-success">Save</button>
+    </form>
+    <style>
+    body{
+        margin: 0;
+    }
+    .userprofile-form{
+        margin: 5px;
+    }
+    </style>
+
+{% endblock %}

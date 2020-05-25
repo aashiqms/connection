@@ -1,0 +1,16 @@
+{% extends "accounts/signup_base_template.html" %}
+
+{# at the terminal, run pip install django-bootstrap4 #}
+{% block signup %}
+    {% load bootstrap4 %}
+<div class="container">
+  <h1>Sign Up</h1>
+  <form method="POST" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    {% endbuttons %}
+  </form>
+</div>
+{% endblock %}

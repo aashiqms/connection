@@ -1,0 +1,18 @@
+{% extends "accounts/signup_base_template.html" %}
+
+{# at the terminal, run pip install django-bootstrap4 #}
+{% load bootstrap4 %}
+
+{% block login %}
+<div class="container">
+  <h1>Login</h1>
+  <form method="POST" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">Login</button>
+        <p>Not a member <span><a href="{% url 'accounts:signup' %}" style="color: #00E56B;">create account</a></span></p>
+    {% endbuttons %}
+  </form>
+</div>
+{% endblock %}
