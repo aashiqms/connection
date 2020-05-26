@@ -1,7 +1,12 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 from . import views
-from accounts.views import ProfileCreateView, ProfileUpdateView, ProfileDeleteView, ProfileDetailView, ProfileListView, ProfilePage
+from accounts.views import ProfileCreateView,\
+    ProfileUpdateView,\
+    ProfileDeleteView,\
+    ProfileDetailView,\
+    ProfileListView,\
+    NewsFeed
 
 app_name = 'accounts'
 
@@ -16,6 +21,6 @@ urlpatterns = [
     path('userprofile/create/', ProfileCreateView.as_view(), name='create'),
     path('userprofile/<int:pk>/update/', ProfileUpdateView.as_view(), name='update'),
     path('userprofile/<int:pk>/delete/', ProfileDeleteView.as_view(), name='delete'),
-    path('userprofile/', ProfilePage.as_view(), name='profile_page')
+    path('userprofile/', NewsFeed.as_view(), name='newsfeed')
 
 ]

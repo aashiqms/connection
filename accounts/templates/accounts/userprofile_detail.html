@@ -5,16 +5,20 @@
 
 
         <h1 class='userprofile-name'>{{ userprofile.name }}</h1>
+    <hr>
     <h1 class='userprofile-about-me'>{{ userprofile.about_me }}</h1>
+    <hr>
 
 <h1 class='userprofile-favourite-tv-shows'>{{ userprofile.favourite_tv_shows }}</h1>
+    <hr>
 
     <h1 class='userprofile-date-of-birth'>{{ userprofile.date_of_birth }}</h1>
+    <hr>
 
 
       {% if user.is_authenticated %}
           <a class="btn btn-primary" href="{% url 'accounts:update' pk=userprofile.pk %}"><span class="fas fa-pencil">edit</span></a>
-          <a class="btn btn-primary" href="{% url 'accounts:delete' pk=userprofile.pk %}"><span class="fas date-icon">delete</span></a>
+{#          <a class="btn btn-primary" href="{% url 'accounts:delete' pk=userprofile.pk %}"><span class="fas date-icon">delete</span></a>#}
       {% endif %}
 
 {% endblock %}

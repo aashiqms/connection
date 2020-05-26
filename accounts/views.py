@@ -45,9 +45,17 @@ class ProfileCreateView(CreateView, LoginRequiredMixin):
     login_url = '/login/'
     redirect_field_name = 'accounts/userprofile_detail.html'
 
+    def get_object(self, queryset=None):
+        pk_ = self.kwargs.get('pk')
+        return get_object_or_404(UserProfile, pk=pk_)
+
 
 class ProfileDetailView(DetailView, LoginRequiredMixin):
     model = UserProfile
+
+    def get_object(self, queryset=None):
+        pk_ = self.kwargs.get('pk')
+        return get_object_or_404(UserProfile, pk=pk_)
 
 
 class ProfileListView(ListView, LoginRequiredMixin):
@@ -63,6 +71,10 @@ class ProfileListView(ListView, LoginRequiredMixin):
         }
         return render(request, 'accounts/userprofile_list.html', context)
 
+    def get_object(self, queryset=None):
+        pk_ = self.kwargs.get('pk')
+        return get_object_or_404(UserProfile, pk=pk_)
+
 
 class ProfileUpdateView(UpdateView, LoginRequiredMixin):
     model = UserProfile
@@ -70,14 +82,22 @@ class ProfileUpdateView(UpdateView, LoginRequiredMixin):
     login_url = '/login/'
     redirect_field_name = 'accounts/userprofile_detail.html'
 
+    def get_object(self, queryset=None):
+        pk_ = self.kwargs.get('pk')
+        return get_object_or_404(UserProfile, pk=pk_)
+
 
 class ProfileDeleteView(DeleteView):
-    model = UserProfile
-    success_url = reverse_lazy('userprofile_list')
+    template_name = 'accounts/userprofile_delete.html'
+    success_url = reverse_lazy('accounts:list')
+
+    def get_object(self, queryset=None):
+        pk_ = self.kwargs.get('pk')
+        return get_object_or_404(UserProfile, pk=pk_)
 
 
-class ProfilePage(TemplateView):
-    template_name = 'accounts/profile_page.html'
+class NewsFeed(TemplateView):
+    template_name = 'accounts/newsfeed.html'
 
 
 
